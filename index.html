@@ -3,20 +3,40 @@
     <meta charset='UTF-8'>
     <title>Notes</title>
     
-    <script src='lib/note-model.js'></script>
-    <script src='lib/note-list-model.js'></script>
-    <script src='lib/note-list-view.js'></script>
+
   </head>
 
   <body>
     
-    <div id='app'>
-      hello
-    </div>
+    <div id='app'></div>
 
+
+    <script src='lib/note-model.js'></script>
+    <script src='lib/note-list-model.js'></script>
+    <script src='lib/note-list-view.js'></script>
     <script src='lib/note-controller.js'></script>
-    <script>var noteController = new NoteController(new NoteList());
-        noteController.updateList()</script>
   </body>
 
+  <script>
+    var noteController = new NoteController(new NoteList());
+    noteController.updateList()
+    makeUrlChangeShowNote();
+
+    function makeUrlChangeShowNote() {
+    window.addEventListener("hashchange", showNoteForCurrentPage);
+    };
+
+    function showNoteForCurrentPage() {
+      showNote(getNoteFromUrl(window.location));
+    };
+
+    function getNoteFromUrl(location) {
+      var id = location.hash.slice(-1)
+      return noteController.getNoteById(id);
+    };
+
+    function showNote(note) {
+      document.getElementById("app").innerHTML = note;
+    };
+  </script>
 </html>

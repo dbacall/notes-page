@@ -14,6 +14,7 @@
 
     assert.isTrue( notes.length === 1 );
     assert.isTrue( notes[0].get() === 'Hello world' );
+    assert.isTrue( notes[0].getId() === 0 );
   }
 
   function testAddNotesssss() {
@@ -26,6 +27,8 @@
     assert.isTrue( notes.length === 2 );
     assert.isTrue( notes[0].get() === 'Hello world' );
     assert.isTrue( notes[1].get() === 'Byeeee world' );
+    assert.isTrue( notes[0].getId() === 0 );
+    assert.isTrue( notes[1].getId() === 1 );
   }
 
   testEmptyListByDefault();
