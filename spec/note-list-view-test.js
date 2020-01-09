@@ -9,7 +9,7 @@
     var noteList = new NoteList();
     noteList.add("hello world, how you doing?");
 
-    var noteListView = new NoteListView(noteList);)
+    var noteListView = new NoteListView(noteList);
 
     assert.isTrue( noteListView.show() === "<ul><li><a href='http://localhost:8080#notes/0'>hello world, how you...</a></li></ul>" );
   }

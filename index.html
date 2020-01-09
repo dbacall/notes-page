@@ -8,6 +8,10 @@
 
   <body>
     
+    <form action="/note" method='post' id='text'>
+      <textarea name="note" id="note"></textarea>
+      <input type='submit' value='Submit'>
+    </form>
     <div id='app'></div>
 
 
@@ -19,24 +23,9 @@
 
   <script>
     var noteController = new NoteController(new NoteList());
+    
+    noteController.makeUrlChangeShowNote();
+    noteController.submitNote();
     noteController.updateList()
-    makeUrlChangeShowNote();
-
-    function makeUrlChangeShowNote() {
-    window.addEventListener("hashchange", showNoteForCurrentPage);
-    };
-
-    function showNoteForCurrentPage() {
-      showNote(getNoteFromUrl(window.location));
-    };
-
-    function getNoteFromUrl(location) {
-      var id = location.hash.slice(-1)
-      return noteController.getNoteById(id);
-    };
-
-    function showNote(note) {
-      document.getElementById("app").innerHTML = note;
-    };
   </script>
 </html>
